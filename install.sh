@@ -14,7 +14,7 @@ elif [ "$TYPE" == "NGROK" ]; then
   ./ngrok http 8080
   echo Setting Up Ngrok
 elif [ "$TYPE" == "FRP" ]; then
-  if [ "FRP_TYPE" == "SAKURA" ]; then
+  if [ "$FRP_TYPE" == "SAKURA" ]; then
     wget -q https://nya.globalslb.net/natfrp/client/frpc/0.45.0-sakura-7/frpc_linux_amd64
     mv ./frpc_linux_amd64 ./frpc && chmod +x ./frpc
     sudo ./frpc -f $FRP_AUTH_TOKEN
@@ -22,7 +22,8 @@ elif [ "$TYPE" == "FRP" ]; then
     wget -q https://github.com/fatedier/frp/releases/download/v0.51.3/frp_0.51.3_linux_amd64.tar.gz
     tar -xzf frp_0.51.3_linux_amd64.tar.gz
     mv ./frp_0.51.3_linux_amd64/frpc ./frpc && chmod +x ./frpc
-    echo `[common]
+    cat >./frpc.ini<<EOF
+[common]
 server_addr = $FRP_ADDRESS
 server_port = $FRP_PORT
 user = $FRP_USER
@@ -34,7 +35,7 @@ plugin = https2http
 plugin_local_addr = 127.0.0.1:8080
 plugin_host_header_rewrite = 127.0.0.1
 plugin_header_X-From-Where = frp
-` > ./frpc.ini
+EOF
     sudo ./frpc -c ./frpc.ini
   fi
   echo Setting Up Frp
