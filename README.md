@@ -7,10 +7,10 @@
 ## 机密环境变量
 
 ```bash
-TYPE # 内网穿透飞方式 可选值 (不包含引号) 'HIPER'、'NPS'、'NGROK'、'FRP'
+TYPE # 内网穿透方式 可选值 (不包含引号) 'HIPER'、'NPS'、'NGROK'、'FRP'
 
 # HIPER
-HIPER_AUTH_TOKEN # HIPER 凭证兑换码
+HIPER_AUTH_TOKEN # Hiper 凭证兑换码
 
 # NPS
 NPS_AUTH_TOKEN # NPS 验证令牌
