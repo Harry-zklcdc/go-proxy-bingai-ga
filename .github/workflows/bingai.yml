@@ -1,0 +1,31 @@
+name: BingAI
+on: 
+  workflow_dispatch:
+  # If you want to run it automatically, please remove the comment below, but it will increase the risk of being banned.
+  # 想要自动运行请取消下面的注释, 但是会增加被封号的风险
+  # schedule:
+  #   - cron: '0 */6 * * *'
+
+defaults:
+  run:
+    shell: bash 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setting Up Go-Proxy-BingAI
+      run: |
+        wget -q https://raw.githubusercontent.com/Harry-zklcdc/go-proxy-bingai/master/docker/docker-compose.yml
+        docker compose up -d
+    - name: Setting Up Intranet Penetration
+      run: bash install.sh
+      env:
+        TYPE: ${{ secrets.TYPE }}
+        NPS_AUTH_TOKEN: ${{ secrets.NPS_AUTH_TOKEN }}
+        NPS_ADDRESS: ${{ secrets.NPS_ADDRESS }}
+        NPS_TYPE: ${{ secrets.NPS_TYPE }}
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+    - name: Keep Running Ubuntu System and keepAlive
+      run: sleep 6h
