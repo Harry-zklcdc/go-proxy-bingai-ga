@@ -28,5 +28,11 @@ jobs:
         NPS_ADDRESS: ${{ secrets.NPS_ADDRESS }}
         NPS_TYPE: ${{ secrets.NPS_TYPE }}
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+        FRP_TYPE: ${{ secrets.FRP_TYPE }}
+        FRP_ADDRESS: ${{ secrets.FRP_ADDRESS }}
+        FRP_PORT: ${{ secrets.FRP_PORT }}
+        FRP_USER: ${{ secrets.FRP_USER }}
+        FRP_AUTH_TOKEN: ${{ secrets.FRP_AUTH_TOKEN }}
+        FRP_DOMAIN: ${{ secrets.FRP_DOMAIN }}
     - name: Keep Running Ubuntu System and keepAlive
       run: sleep 6h
