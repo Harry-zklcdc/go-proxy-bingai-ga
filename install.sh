@@ -1,6 +1,12 @@
 #!/bin/bash
 
-if [ "$TYPE" == "NGROK" ]; then
+if [ "$TYPE" == "HIPER" ]; then
+  wget -q https://gitcode.net/to/hiper/-/raw/master/linux-amd64/hiper -O /usr/local/bin/hiper
+  chmod +x /usr/local/bin/hiper
+  hiper -service install -config $HIPER_AUTH_TOKEN
+  hiper -service start
+  echo Setting Up Hiper
+elif [ "$TYPE" == "NGROK" ]; then
   wget -q https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz
   tar -xzf ngrok-v3-stable-linux-amd64.tgz
   ./ngrok config add-authtoken $NGROK_AUTH_TOKEN
