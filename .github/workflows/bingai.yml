@@ -24,6 +24,7 @@ jobs:
       env:
         TYPE: ${{ secrets.TYPE }}
         HIPER_AUTH_TOEKN: ${{ secrets.HIPER_AUTH_TOEKN }}
+        CFT_AUTH_TOKEN: ${{ secrets.CFT_AUTH_TOKEN }}
         NPS_AUTH_TOKEN: ${{ secrets.NPS_AUTH_TOKEN }}
         NPS_ADDRESS: ${{ secrets.NPS_ADDRESS }}
         NPS_TYPE: ${{ secrets.NPS_TYPE }}
